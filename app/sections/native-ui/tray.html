@@ -1,0 +1,55 @@
+<template class="task-template">
+  <section id="tray-section" class="section js-section u-category-native-ui">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-native-ui"></use></svg>
+          Tray/托盘
+        </h1>
+        <h3>The <code>tray</code> module allows you to create an icon in the operating system's notification area.</h3>
+        <h4><code>tray</code>允许你在操作系统的通知栏创建一个图标。</h4>
+        <p>This icon can also have a context menu attached.</p>
+        <p class="cfont">这个图标可以附加一个右击菜单。</p>
+
+        <p>Open the <a href="http://electron.atom.io/docs/api/tray">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p>
+        <p class="cfont">在你的浏览器中查看完整说明。</p>
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="tray-demo-toggle" class="js-container-target demo-toggle-button">Tray/托盘
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux | Process: Main</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="put-in-tray">View Demo/查看示例</button>
+            <span class="demo-response" id="tray-countdown"></span>
+          </div>
+          <p>The demo button sends a message to the main process using the <code>ipc</code> module. In the main process the app is told to place an icon, with a context menu, in the tray.</p>
+          <p class="cfont">这个demo的按钮使用<code>ipc</code>模块给主程序发送一个通知。在主程序中被告知在托盘中添加一个图标，这个图表附带一个右击菜单。</p>
+
+          <p>In this example the tray icon can be removed by clicking 'Remove' in the context menu or selecting the demo button again.</p>
+          <p class="cfont">在这个例子中，托盘的图表可以通过点击右击菜单的'Remove'来变比。</p>
+          <h5>Main Process/主程序</h5>
+          <pre><code data-path="main-process/native-ui/tray/tray.js"></code></pre>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/native-ui/tray/tray.js"></code></pre>
+
+          <div class="demo-protip">
+            <h2>ProTip/提升提示</h2>
+            <strong>Tray support in Linux.</strong>
+            <strong>Linux对托盘图标的支持。</strong>
+            <p>On Linux distributions that only have app indicator support, users will need to install <code>libappindicator1</code> to make the tray icon work. See the <a href="http://electron.atom.io/docs/api/tray">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> for more details about using Tray on Linux.</p>
+            <p class="cfont">在Linux分发中只有支持应用标识，用户需要安装<code>libappindicatorl</code>才支持托盘图标。点击查看完整说明。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./renderer-process/native-ui/tray/tray')
+    </script>
+
+  </section>
+</template>

@@ -1,0 +1,83 @@
+<template class="task-template">
+  <section id="ex-links-file-manager-section" class="section js-section u-category-native-ui">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon">
+            <use xlink:href="assets/img/icons.svg#icon-native-ui"></use>
+          </svg>
+          Open external links and the file manager/打开外链以及文件管理
+        </h1>
+        <h3>The <code>shell</code> module in Electron allows you to access certain native elements like the file manager and
+          default web browser.</h3>
+        <h4>Electron的<code>shell</code>模块允许你访问本地元素如文件管理器或者默认的浏览器。</h4>
+
+        <p>This module works in both the main and renderer process.</p>
+        <p class="cfont">该模块可以在主程序和渲染程序中运行。</p>
+        <p>Open the <a href="http://electron.atom.io/docs/api/shell">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a>          in your browser.</p>
+        <p class="cfont">在你的浏览器中查看完整接口说明。</p>
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="open-file-manager-demo-toggle" class="js-container-target demo-toggle-button">Open Path in File Manager/用文件管理器打开链接
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="open-file-manager">View Demo/查看示例</button>
+          </div>
+          <p>This demonstrates using the <code>shell</code> module to open the system file manager at a particular location.</p>
+          <p class="cfont">demo使用<code>shell</code>模块用系统的文件管理器打开指定的地址。</p>
+
+          <p>Clicking the demo button will open your file manager at the root.</p>
+          <p class="cfont">点击查看示例按钮打开你的根文件管理器。</p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/native-ui/ex-links-file-manager/file-manager.js"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="open-ex-links-demo-toggle" class="js-container-target demo-toggle-button">Open External Links/打开外链
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="open-ex-links">View Demo/查看示例</button>
+          </div>
+          <p>If you do not want your app to open website links <em>within</em> the app, you can use the <code>shell</code> module
+            to open them externally. When clicked, the links will open outside of your app and in the user's default web
+            browser.
+          </p>
+          <p class="cfont">如果你不想让你的应用在内部打开应用，你可以使用<code>shell</code>模块在外部打开他们。点击链接是会在你的默认浏览器中打开。</p>
+          <p>When the demo button is clicked, the electron website will open in your browser.</p>
+          <p class="cfont">点击按钮，查看效果。</p>
+            <p>
+              <h5>Renderer Process</h5>
+              <pre><code data-path="renderer-process/native-ui/ex-links-file-manager/ex-links.js"></code></pre>
+
+              <div class="demo-protip">
+                <h2>ProTip/提升提示</h2>
+                <strong>Open all outbound links externally.</strong>
+                <strong>打开所有的外链。</strong>
+                <p>You may want to open all <code>http</code> and <code>https</code> links outside of your app. To do this,
+                  query the document and loop through each link and add a listener. This app uses the code below which is
+                  located in <code>assets/ex-links.js</code>.</p>
+                  <p>你也许想要打开应用中所有的<code>http</code> <code>https</code>外链。对于此，你需要查询文档中所有的外链，然后给每一个添加一个监听器。这个应用使用了如下代码，位于<code>assets/ex-links.js</code>。</p>
+                <h5>Renderer Process/渲染程序</h5>
+                <pre><code data-path="assets/ex-links.js"></code></pre>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./renderer-process/native-ui/ex-links-file-manager/file-manager')
+      require('./renderer-process/native-ui/ex-links-file-manager/ex-links')
+    </script>
+
+  </section>
+</template>

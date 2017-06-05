@@ -1,0 +1,152 @@
+<template class="task-template">
+  <section id="app-sys-information-section" class="section js-section u-category-system">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon">
+            <use xlink:href="assets/img/icons.svg#icon-system"></use>
+          </svg>
+          Get app and system information
+        </h1>
+        <h1>获取应用和系统信息</h1>
+        <h3>With a few Node.js and Electron modules you can gather information about the user's system, app or screen.</h3>
+        <h3>使用一些Node.js和Electron模块你可以收集到你的系统和应用或者屏幕的一些信息。</h3>
+        <p>Links to the relevant documentation are in the demos below.</p>
+        <p class="cfont">相关的说明文档看下面。</p>
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="app-info-demo-toggle" class="js-container-target demo-toggle-button">Get app information/获取应用信息
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="app-info">View Demo/查看示例/查看示例</button>
+            <span class="demo-response" id="got-app-info"></span>
+          </div>
+          <p>The main process <code>app</code> module can be used to get the path at which your app is located on the user's
+            computer.
+          </p>
+          <p class="cfont">主应用程序模块<code>app</code>能够用来获取你的应用在你的电脑上的路径。</p>
+          <p>In this example, to get that information from the renderer process, we use the <code>ipc</code> module to send
+            a message to the main process requesting the app's path.</p>
+          <p class="cfont">在这个示例中为了使用渲染程序获得信息，我们使用了<code>ipc</code>模块给主应用发通知请求应用的路径。</p>
+          <p>See the <a href="http://electron.atom.io/docs/api/app">app module documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a>            for more.</p>
+          <p class="cfont">点击获取更多</p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/system/app-information.js"></code></pre>
+          <h5>Main Process/主程序</h5>
+          <pre><code data-path="main-process/system/app-information.js"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="app-version-demo-toggle" class="js-container-target demo-toggle-button">Get version information/获取版本信息
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="version-info">View Demo/查看示例</button>
+            <span class="demo-response" id="got-version-info"></span>
+          </div>
+          <p>The <code>process</code> module is built into Node.js (therefore you can use this in both the main and renderer
+            processes) and in Electron apps this object has a few more useful properties on it.</p>
+          <p class="cfont"><code>process</code>是内置在node.js中的模块（因此你可以在主程序和渲染程序中使用）并且在Electro应用中，这个对象有额外一些有用的属性。</p>
+          <p>The example below gets the version of Electron in use by the app.</p>
+          <p class="cfont">下面的例子通过应用获得electron的版本。</p>
+          <p>See the <a href="http://electron.atom.io/docs/api/process">process documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a>            for more.</p>
+          <p>查看更多</p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/system/version-information.js"></code></pre>
+
+          <div class="demo-protip">
+            <h2>ProTip/提升提示</h2>
+            <strong>Find versions of Chromium, Node.js and V8.</strong>
+            <strong>获取Chromium,Node.js,V8的版本。</strong>
+            <p>Electron also includes verions of Chromium, Node.js and V8 within the <code>process.versions</code> object. You
+              can get there quickly by opening up developer tools in an Electron app and typing <code>process.versions</code>.</p>
+            <p class="cfont">Electron使用<code>process.versions</code>也可以或许Chromium,node.js,V8的版本。你可以通过打开开发者工具，在控制台输入<code>process.versions</code>来获取他们的版本。
+            </p>
+            <pre><code class="language-js">// Returns version of Chromium in use
+process.versions.chrome
+// Returns version of V8 in use
+process.versions.v8
+// Returns version of Node in use
+process.versions.node</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="sys-info-demo-toggle" class="js-container-target demo-toggle-button">Get system information/获取系统信息
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="sys-info">View Demo/查看示例</button>
+            <span class="demo-response" id="got-sys-info"></span>
+          </div>
+          <p>The Node.js <code>os</code> module provides useful information about the user's operating system. It's built into
+            Node.js and can be used in both the main and renderer proesses.</p>
+            <p class="cfont">Node.js的<code>os</code>模块提供了获取操作系统信息的功能，可以在主程序和渲染程序中使用。</p>
+          <p>In the example below we require the module and then return the location of the home directory.</p>
+          <p class="cfont">下面的例子我们引入模块，然后定位home路径</p>
+
+          <p>See the full <a href="https://nodejs.org/api/os.html"> os documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a>            for more.</p>
+          <p class="cfont">点击获取更多</p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/system/sys-information.js"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="screen-info-demo-toggle" class="js-container-target demo-toggle-button">Get screen information/获取屏幕信息
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="screen-info">View Demo/查看示例</button>
+            <span class="demo-response" id="got-screen-info"></span>
+          </div>
+          <p>The Electron <code>screen</code> module retrieves information about screen size, displays, cursor position, etc.
+            In the example below we retrieve the dimensions of the monitor in use.</p>
+            <p class="cfont">
+              Electron的<code>screen</code>模块可以用来查询屏幕的尺寸，显示器，鼠标位置，等的信息。下面的例子查询监视器的规格信息。
+            </p>
+
+          <p>See the full <a href="http://electron.atom.io/docs/api/screen">screen documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a>            for more.</p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/system/screen-information.js"></code></pre>
+
+          <div class="demo-protip">
+            <h2>ProTip/提升提示</h2>
+            <strong>Differences in dimensions.</strong>
+            <strong>规格的不同</strong>
+            <p>The <code>.size</code> method in the example returns the raw dimensions of the screen but because of system menu
+              bars this may not be the actual space available for your app.</p>
+              <p class="cfont">例子的<code>.size</code>方法返回宽度，但是系统的菜单栏位置是你的应用不能用到的。</p>
+
+            <p>To get the dimensions of the available screen space use the <code>.workAreaSize</code> method. Using <code>.workArea</code>              will return the coordinates as well as the dimensions of the available screen space.</p>
+            <p class="cfont">获取屏幕的可用区域使用<code>workAreaSize</code>方法。是用<code>.workAreaSize</code>返回可用区域的坐标。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./renderer-process/system/app-information')
+      require('./renderer-process/system/version-information')
+      require('./renderer-process/system/sys-information')
+      require('./renderer-process/system/screen-information')
+    </script>
+
+  </section>
+</template>

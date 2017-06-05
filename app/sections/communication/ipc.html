@@ -1,0 +1,100 @@
+<template class="task-template">
+  <section id="ipc-section" class="section js-section u-category-communication">
+    <header class="communication">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-communication"></use></svg>
+          Communication between processes/程序间的通信
+        </h1>
+        <h3>The <code>ipc</code> (inter-process communication) module allows you to send and receive synchronous and asynchronous messages between the main and renderer processes.</h3>
+        <h4><code>ipc</code>(inter-process communication)模块允许你在主程序和渲染程序间发送和接收异步或者同步的信息。</h4>
+
+        <p>There is a version of this module available for both processes: <code>ipcMain</code> and <code>ipcRenderer</code>.</p>
+        <p class="cfont">这个模块的一个版本在：<code>ipcMain</code>与<code>ipcRenderer</code>中是有效的。</p>
+        <p>Open the full API documentation for the <a href="http://electron.atom.io/docs/api/ipc-main">main process<span class="u-visible-to-screen-reader">(opens in new window)</span></a> and the <a href="http://electron.atom.io/docs/api/ipc-renderer/">renderer process<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p>
+        <p class="cfont">在你的浏览器中查看完整的文档说明。</p>
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="async-msg-demo-toggle" class="js-container-target demo-toggle-button">Asynchronous messages/异步通知
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="async-msg">Ping</button>
+            <span class="demo-response" id="async-reply"></span>
+          </div>
+          <p>Using <code>ipc</code> to send messages between processes asynchronously is the preferred method since it will return when finished without blocking other operations in the same process.</p>
+          <p class="cfont">使用<code>ipc</code>在程序间使用异步通知是主要推荐的方式。因为在同一个程序中可以无阻塞的发送。</p>
+
+          <p>This example sends a "ping" from this process (renderer) to the main process. The main process then replies with "pong".</p>
+          <p class="cfont">
+            实例（ping按钮）中发送了一个'ping'给主程序，主程序收到后会回应'pong'。
+          </p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/communication/async-msg.js"></code></pre>
+          <h5>Main Process/主程序</h5>
+          <pre><code data-path="main-process/communication/async-msg.js"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="sync-msg-demo-toggle" class="js-container-target demo-toggle-button">Synchronous messages/同步通知
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="sync-msg">Ping</button>
+            <span class="demo-response" id="sync-reply"></span>
+          </div>
+          <p>You can use the <code>ipc</code> module to send synchronous messages between processes as well, but note that the synchronous nature of this method means that it <b>will block</b> other operations while completing its task.</p>
+          <p class="cfont">你也可以在不同的程序间使用<code>ipc</code>发送同步通知。但是请注意使用同步通知意味着将有可能造成<b>阻塞</b>。</p>
+          <p>This example sends a synchronous message, "ping", from this process (renderer) to the main process. The main process then replies with "pong".</p>
+          <p class="cfont">这个demo发送一个同步通知。'ping'从rander程序到主程序。然后主程序回应'pong'。</p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/communication/sync-msg.js"></code></pre>
+          <h5>Main Process/主程序</h5>
+          <pre><code data-path="main-process/communication/sync-msg.js"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="invis-msg-demo-toggle" class="js-container-target demo-toggle-button">Communicate with an invisible window/和不可见的窗口通信
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Both</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="invis-msg">Compute Factorial/计算阶乘</button>
+            <span class="demo-response" id="invis-reply"></span>
+          </div>
+          <p>It is common practice to create a new invisible browser window (renderer process) in order to run tasks without impacting performance in the main app's window.</p>
+          <p class="cfont">
+            一个很常见的事情是在主程序下创建一个不可见的窗口来运行一些私下的任务，防止页面出现卡死等问题。
+          </p>
+
+          <p>In this example we use the <code>remote</code> module to create a new invisible browser window from this renderer process. When the new page is loaded we send a message with <code>ipc</code> that the new window is listening for.</p>
+          <p class="cfont">这个例子中我们使用<code>remote</code>模块来创建一个不不可见的浏览器窗口（在渲染程序）。当新窗口加载完我们使用<code>ipc</code>发送了一个通知。（新窗口被监听着）</p>
+          <p>The new window then computes the factorial and sends the result to be recieved by this, the original, window and added to the page above.</p>
+          <p class="cfont">然后新窗口计算阶乘，发送结果。然后原始的窗口显示。</p>
+          <h5>Renderer Process/渲染程序</h5>
+          <pre><code data-path="renderer-process/communication/invisible-msg.js"></code></pre>
+          <h5>Invisible Window Page HTML/不可见窗口的html</h5>
+          <pre><code data-path="sections/communication/invisible.html"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./renderer-process/communication/sync-msg')
+      require('./renderer-process/communication/async-msg')
+      require('./renderer-process/communication/invisible-msg')
+    </script>
+
+  </section>
+</template>

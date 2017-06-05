@@ -1,0 +1,46 @@
+<template class="task-template">
+  <section id="desktop-capturer-section" class="section js-section u-category-media">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-media"></use></svg>
+          Take a screenshot/截个屏
+        </h1>
+        <h3>The <code>desktopCapturer</code> module in Electron can be used to access any media, such as audio, video, screen and window, that is available through the <code>getUserMedia</code> web API in Chromium.</h3>
+        <h4>
+          <code>desktopCapturer</code>能够接触到任何媒体，音频，视频，屏幕，window窗口，可用通过Chromium的<code>getUserMedia</code>来访问其web API。
+        </h4>
+
+        <p>Open the <a href="http://electron.atom.io/docs/api/desktop-capturer">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p>
+        <p class="cfont">点击查看完整文档说明。</p>
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="print-pdf-demo-toggle" class="js-container-target demo-toggle-button">Take a Screenshot/截个屏
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux | Process: Renderer</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="screen-shot">View Demo/查看示例</button>
+            <span class="demo-response is-selectable" id="screenshot-path"></span>
+          </div>
+          <p>This demo uses the <code>desktopCapturer</code> module to gather screens in use and select the entire screen and take a snapshot of what is visible.</p>
+          <p class="cfont">
+            这个示例使用了<code>desktopCapturer</code>模块获取屏幕的信息，然后做一个全屏截图。
+          </p>
+          <p>Clicking the demo button will take a screenshot of your current screen and open it in your default viewer.</p>
+          <p class="cfont">点击示例的按钮然后或截取你当前的屏幕之后会用你的默认viewer打开他。</p>
+          <h5>Renderer Process</h5>
+          <pre><code data-path="renderer-process/media/desktop-capturer.js"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./renderer-process/media/desktop-capturer')
+    </script>
+
+  </section>
+</template>
