@@ -10,4 +10,18 @@
     `xxx`是你自己的电脑名字。
 然后直接替换即可。
 
-注：该翻译目前只适用于1.3版本。
+##注
+
+    该翻译目前只适用于1.3版本。
+
+## 图片说明
+
+![about](https://github.com/cddsgtc/electron_doc_translation/blob/master/assets/about.jpg)
+
+![index](https://github.com/cddsgtc/electron_doc_translation/blob/master/assets/index.jpg)
+
+![a](https://github.com/cddsgtc/electron_doc_translation/blob/master/assets/a.jpg)
+
+![b](https://github.com/cddsgtc/electron_doc_translation/blob/master/assets/b.jpg)
+
+![c](https://github.com/cddsgtc/electron_doc_translation/blob/master/assets/c.jpg)
